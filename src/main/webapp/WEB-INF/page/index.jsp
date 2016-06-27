@@ -155,7 +155,7 @@ $(function(){
 				</ul>
 				<div class="navTab-panel tabsPageContent layoutBox">
 					<div class="page unitBox">
-						欢迎使用科正办公系统
+						欢迎使用后台管理系统
 					</div>
 					
 				</div>
@@ -164,7 +164,7 @@ $(function(){
 
 	</div>
 
-	<div id="footer">科正消防检测有限公司</div>
+	<div id="footer">@copyright xxx科技有限公司</div>
 
 
 </body>
