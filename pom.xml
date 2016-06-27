@@ -91,10 +91,7 @@
 					<artifactId>jsp-api</artifactId>
 					<groupId>javax.servlet.jsp</groupId>
 				</exclusion>
-				<exclusion>
-					<artifactId>jstl-api</artifactId>
-					<groupId>javax.servlet.jsp.jstl</groupId>
-				</exclusion>
+				
 			</exclusions>
 		</dependency>
 		<!-- web end -->

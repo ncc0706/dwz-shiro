@@ -54,8 +54,8 @@ public class MyRealm extends AuthorizingRealm {
     	  {
     		  roleList.add(role.getRoleCode());
     	  }
-    	  for(SysPermission permission:permissions )
-    	  {
+    	  for(SysPermission permission:permissions ){
+    		  System.out.println(permission.getPermissionCode());
     		  permissionList.add(permission.getPermissionCode());
     	  }
       }else{  
@@ -77,15 +77,15 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {  
         //获取基于用户名和密码的令牌  
         UsernamePasswordToken token = (UsernamePasswordToken)authcToken;  
-        SysUser user = userService.getByUsername(token.getUsername());  
-      if(null != user){  
-          AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getRealName());  
-          this.setSession(Contents.LOGIN_USER, user);  
-          return authcInfo;  
-      }else{  
-          return null;  
-      }  
-    }  
+        SysUser user = userService.getByUsername(token.getUsername());
+        if(null != user){  
+        	AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getRealName());  
+        	this.setSession(Contents.LOGIN_USER, user);  
+        	return authcInfo;  
+        }else{  
+        	return null;  
+        }  
+    }
        
        
     /** 

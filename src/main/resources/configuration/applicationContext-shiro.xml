@@ -23,6 +23,7 @@
 				/login.do*=anon
 				/logout = logout
 				/login = authc
+				/user/user/* = authc
 			</value>
 		</property>
 	</bean>

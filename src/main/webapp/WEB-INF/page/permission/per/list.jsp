@@ -11,7 +11,7 @@
 	<div class="panelBar">
 		<ul class="toolBar">
 			<li><a rel="addRole" target="dialog" class="add"
-				href="user/per/add.do" ><span>添加</span></a></li>
+				href="${pageContext.request.contextPath }/user/per/add.do" ><span>添加</span></a></li>
 			<li><a class="delete"
 				href="user/per/del.do?perId={sid_per}" target="ajaxTodo" rel="delRoll" 
 				title="确定要删除吗?"><span>删除</span></a></li>
@@ -55,6 +55,6 @@
 	</div>
 </div>
 <form id="pagerForm" method="post" action="user/per/list.do">
-	<input type="hidden" name="pageNum" value="${vo.pageNum}" />
+	<input type="hidden" name="pageNum" value="1" />
      <input type="hidden" name="numPerPage" value="${vo.numPerPage}" />
 </form>

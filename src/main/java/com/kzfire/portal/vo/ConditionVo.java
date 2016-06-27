@@ -160,4 +160,14 @@ public class ConditionVo  extends BaseConditionVO implements Serializable {
 		this.endRow = endRow;
 	}
 
+	@Override
+	public String toString() {
+		return "ConditionVo [text0=" + text0 + ", text1=" + text1 + ", text2="
+				+ text2 + ", text3=" + text3 + ", text4=" + text4 + ", text5="
+				+ text5 + ", text6=" + text6 + ", text7=" + text7 + ", text8="
+				+ text8 + ", text9=" + text9 + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", startRow=" + startRow
+				+ ", endRow=" + endRow + ", searchList=" + searchList + "]";
+	}
+
 }

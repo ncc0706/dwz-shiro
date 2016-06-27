@@ -4,14 +4,11 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
+	<head>
     <base href="<%=basePath%>">
-    
     <title></title>
-    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -20,12 +17,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
 	$.pdialog.resizeDialog({style: {height: 350}}, $.pdialog.getCurrent(), "");
 	</script>
-
   </head>
 
   <body>
 <div class="pageContent">  
-    <form method="post" action="user/per/save.do?navTabId=perList&callbackType=closeCurrent"  class="pageForm required-validate"  onsubmit="return validateCallback(this,dialogAjaxDone)"> 
+    <form method="post" action="${pageContext.request.contextPath }/user/per/save.do?navTabId=perList&callbackType=closeCurrent"  
+    	class="pageForm required-validate"  onsubmit="return validateCallback(this,dialogAjaxDone)"> 
     <div class="formBar">  
              
                 <div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div>
@@ -61,5 +58,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>  
     </form>  
 </div>  
-  </body>
+</body>
 </html>

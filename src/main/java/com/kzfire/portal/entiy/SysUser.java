@@ -106,7 +106,15 @@ public class SysUser implements Serializable{
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	
+	@Override
+	public String toString() {
+		return "SysUser [id=" + id + ", account=" + account + ", password="
+				+ password + ", realName=" + realName + ", idCard=" + idCard
+				+ ", sex=" + sex + ", age=" + age + ", isUse=" + isUse
+				+ ", birthday=" + birthday + ", joinTime=" + joinTime
+				+ ", leftTime=" + leftTime + ", jobLvl=" + jobLvl + ", mobile="
+				+ mobile + ", addr=" + addr + "]";
+	}
 	
 	
 	

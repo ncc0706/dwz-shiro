@@ -55,6 +55,6 @@
 	</div>
 </div>
 <form id="pagerForm" method="post" action="user/role/list.do">
-	<input type="hidden" name="pageNum" value="${vo.pageNum}" />
+	<input type="hidden" name="pageNum" value="1" />
      <input type="hidden" name="numPerPage" value="${vo.numPerPage}" />
 </form>

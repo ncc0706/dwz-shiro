@@ -58,13 +58,13 @@ public class UserController extends BaseController {
 		cvo.setTotalCount(userService.getUserCount(cvo));
 		model.addAttribute("vo", cvo);
 		model.addAttribute("list", userService.getList(cvo));
-		return "user/user/list";
+		return "user/user/user_list";
 	}
 
 	@RequestMapping("/add")
 	public String add(Model model, HttpServletRequest request) {
 		model.addAttribute("user", new SysUser());
-		return "user/user/userEdit";
+		return "user/user/user_edit";
 	}
 
 	@RequestMapping("/changePsw")
@@ -110,7 +110,7 @@ public class UserController extends BaseController {
 				MStringUtils.TimeTostr(user.getBirthday(), null));
 		model.addAttribute("mjoinTime",
 				MStringUtils.TimeTostr(user.getJoinTime(), null));
-		return "user/user/userEdit";
+		return "user/user/user_edit";
 	}
 
 	@RequestMapping("/save")

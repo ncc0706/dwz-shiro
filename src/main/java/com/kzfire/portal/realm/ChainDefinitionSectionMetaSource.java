@@ -39,6 +39,7 @@ public class ChainDefinitionSectionMetaSource implements FactoryBean<Ini.Section
             
             //如果不为空值添加到section中
             if(StringUtils.isNotEmpty(per.getPath()) && StringUtils.isNotEmpty(per.getPermissionCode())) {
+            	System.out.println(per.getPermissionCode()+"+++++++");
             	section.put(per.getPath(),  MessageFormat.format(PREMISSION_STRING,per.getPermissionCode()));
             }
             

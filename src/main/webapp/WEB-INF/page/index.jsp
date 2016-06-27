@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>科正办公系统</title>
+<title>后台管理系统</title>
 
 <link href="jui/themes/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="jui/themes/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="jui/js/dwz.accordion.js" type="text/javascript"></script>
 <script src="jui/js/dwz.ui.js" type="text/javascript"></script>
 <script src="jui/js/dwz.theme.js" type="text/javascript"></script>
-<script src="jui/jui/js/dwz.switchEnv.js" type="text/javascript"></script>
+<script src="jui/js/dwz.switchEnv.js" type="text/javascript"></script>
 <script src="jui/js/dwz.alertMsg.js" type="text/javascript"></script>
 <script src="jui/js/dwz.contextmenu.js" type="text/javascript"></script>
 <script src="jui/js/dwz.navTab.js" type="text/javascript"></script>
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--
 <script src="bin/dwz.min.js" type="text/javascript"></script>
 -->
-<script src="js/dwz.regional.zh.js" type="text/javascript"></script>
+<script src="jui/js/dwz.regional.zh.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 $(function(){
@@ -95,14 +95,13 @@ $(function(){
 	<div id="layout">
 		<div id="header">
 			<div class="headerNav">
-				<img src="common/logo.png" width="200px">
+				<a class="logo" href="${pageContext.request.contextPath }/index.do">标志</a>
 				<ul class="nav">
 					<li><a>${currentLoginUser.realName}</a></li>
-					<li><a href="user/user/changePsw.do" rel="changePsw" target="dialog">修改密码</a></li>
-					<li><a href="logout.do">退出</a></li>
+					<li><a href="${pageContext.request.contextPath }/user/user/changePsw.do" rel="changePsw" target="dialog">修改密码</a></li>
+					<li><a href="${pageContext.request.contextPath }/logout.do">退出</a></li>
 				</ul>
 			</div>
-			<!-- navMenu -->
 		</div>
 
 		<div id="leftside">
@@ -130,8 +129,8 @@ $(function(){
 					</div>
 					<div class="accordionContent">
 						<ul class="tree">
-							<li><a href="user/per/list.do" target="navTab" rel="perList">权限管理</a></li>
-							<li><a href="user/role/list.do" target="navTab" rel="roleList">角色管理</a></li>
+							<li><a href="${pageContext.request.contextPath }/user/per/list.do" target="navTab" rel="perList">权限管理</a></li>
+							<li><a href="${pageContext.request.contextPath }/user/role/list.do" target="navTab" rel="roleList">角色管理</a></li>
 						</ul>
 					</div>
 					
@@ -167,10 +166,7 @@ $(function(){
 	</div>
 
 	</div>
-
 	<div id="footer">@copyright xxx科技有限公司</div>
-
-
 </body>
 </html>
 
