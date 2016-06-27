@@ -325,7 +325,7 @@
 			<version>${commons-beanutils.version}</version>
 		</dependency>
 		<!-- Apache commons end -->
-		
+
 		<dependency>
 			<groupId>com.ibm.icu</groupId>
 			<artifactId>icu4j</artifactId>
@@ -366,11 +366,32 @@
 					<server>tomcat7</server>
 				</configuration>
 			</plugin>
-
-			<!-- <plugin> <groupId>org.zeroturnaround</groupId> <artifactId>jrebel-maven-plugin</artifactId> 
-				<version>1.1.6</version> <executions> <execution> <id>generate-rebel-xml</id> 
-				<phase>process-resources</phase> <goals> <goal>generate</goal> </goals> </execution> 
-				</executions> </plugin> -->
+			
+			<!-- copy 源码文件下的配置文件 -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-xmls</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/main/java</directory>
+									<includes>
+										<include>**/*.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
 		</plugins>
 		<finalName>dwz-shiro</finalName>

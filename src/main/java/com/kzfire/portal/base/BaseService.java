@@ -13,14 +13,16 @@ import com.kzfire.portal.dao.BaseDao;
  * 2014-12-1 上午9:24:35  
  */
 public class BaseService {
+	
 	@Autowired
 	BaseDao baseDao;
+	
 	/**
 	 * @param 表名
 	 * @return 记录数
 	 */
 	public int getTableCount(String table) {
-		Map map=new HashMap();
+		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("table", table);
 		return baseDao.getTableCount(map);
 	}

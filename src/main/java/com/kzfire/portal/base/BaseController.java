@@ -15,10 +15,9 @@ import com.kzfire.portal.utils.VoFactory;
 /**
  * @author ysf 基础action 2014-8-21 上午9:15:21
  */
-public class BaseAction {
+public class BaseController {
 	protected ResultVo re = VoFactory.getResultVo();
-	protected final static String VIEW = "WEB-INF/page/";
-	protected static Logger log = Logger.getLogger(BaseAction.class);
+	protected static Logger log = Logger.getLogger(BaseController.class);
 
 	/**
 	 * 是否存在空的对象 存在返回Null 检测参数是否齐全

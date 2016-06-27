@@ -1,6 +1,5 @@
 package com.kzfire.portal.service;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import com.kzfire.portal.dao.UserDao;
 import com.kzfire.portal.entiy.LoginLog;
 import com.kzfire.portal.entiy.SysPermission;
 import com.kzfire.portal.entiy.SysRole;
-import com.kzfire.portal.entiy.SysRolePermission;
 import com.kzfire.portal.entiy.SysUser;
 import com.kzfire.portal.entiy.SysUserRole;
 import com.kzfire.portal.utils.MStringUtils;
@@ -22,6 +20,7 @@ import com.kzfire.portal.vo.UserVo;
 
 @Service
 public class UserService extends BaseService{
+	
 	@Autowired
 	private UserDao userDao;
 	

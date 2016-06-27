@@ -1,4 +1,4 @@
-package com.kzfire.portal.action.user;
+package com.kzfire.portal.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kzfire.portal.base.BaseAction;
+import com.kzfire.portal.base.BaseController;
 import com.kzfire.portal.entiy.LoginLog;
 import com.kzfire.portal.entiy.SysUser;
 import com.kzfire.portal.service.UserService;
@@ -24,7 +24,8 @@ import com.kzfire.portal.utils.Contents;
 import com.kzfire.portal.utils.MStringUtils;
 
 @Controller
-public class LoginAction extends BaseAction {
+public class LoginController extends BaseController {
+	
 	@Autowired
 	private UserService userService;
 
@@ -86,7 +87,7 @@ public class LoginAction extends BaseAction {
             token.clear();  
             return "login";
         }  
-		return VIEW+"index";
+		return "index";
 	}
 
 

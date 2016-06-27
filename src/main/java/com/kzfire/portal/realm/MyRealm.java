@@ -17,6 +17,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.kzfire.portal.entiy.SysPermission;
 import com.kzfire.portal.entiy.SysRole;
@@ -24,7 +25,9 @@ import com.kzfire.portal.entiy.SysUser;
 import com.kzfire.portal.service.UserService;
 import com.kzfire.portal.utils.Contents;
 
+@Component("myRealm")
 public class MyRealm extends AuthorizingRealm {  
+	
 	@Autowired
 	private UserService userService;
     /** 

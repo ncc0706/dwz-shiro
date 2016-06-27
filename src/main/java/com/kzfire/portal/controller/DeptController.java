@@ -1,4 +1,4 @@
-package com.kzfire.portal.action.user;
+package com.kzfire.portal.controller;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kzfire.portal.base.BaseAction;
+import com.kzfire.portal.base.BaseController;
 import com.kzfire.portal.entiy.SysDept;
 import com.kzfire.portal.service.DeptService;
 import com.kzfire.portal.service.UserService;
@@ -21,108 +21,112 @@ import com.kzfire.portal.vo.ConditionVo;
 
 @RequestMapping("/user/dept")
 @Controller
-public class DeptAction extends BaseAction{
+public class DeptController extends BaseController {
 	@Autowired
 	DeptService deptService;
 	@Autowired
 	UserService userService;
-	
+
 	/**
 	 * 设置员工部门
+	 * 
 	 * @param model
 	 * @param request
 	 * @param response
 	 * @return
 	 */
 	@RequestMapping("/setUserDept")
-	public String setUserDept(Model model,HttpServletRequest request,HttpServletResponse response) {
-		
-		String userId=request.getParameter("userId");
+	public String setUserDept(Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		String userId = request.getParameter("userId");
 		model.addAttribute("userId", userId);
-		//设置部门树
-		List<SysDept> list=deptService.getAllDept();
+		// 设置部门树
+		List<SysDept> list = deptService.getAllDept();
 		model.addAttribute("data", JSONUtils.parseList(list));
-		return VIEW+"user/dept/setUserDept";
+		return "user/dept/setUserDept";
 	}
-	
+
 	@RequestMapping("/saveUserdept")
 	public ModelAndView saveUserdept(Model model, HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
-			Integer userId=Integer.parseInt(request.getParameter("userId"));
-			Integer deptId=Integer.parseInt(request.getParameter("deptId"));
-			deptService.saveUserdept(userId,deptId);
+			Integer userId = Integer.parseInt(request.getParameter("userId"));
+			Integer deptId = Integer.parseInt(request.getParameter("deptId"));
+			deptService.saveUserdept(userId, deptId);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ajaxDoneError("操作失败:"+e.getMessage());
+			return ajaxDoneError("操作失败:" + e.getMessage());
 		}
 		return ajaxDoneSuccess("操作成功");
 	}
-	
+
 	@RequestMapping("/main")
-	public String list(Model model,HttpServletRequest request,HttpServletResponse response) {
-		//设置部门树
-		List<SysDept> list=deptService.getAllDept();
+	public String list(Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		// 设置部门树
+		List<SysDept> list = deptService.getAllDept();
 		model.addAttribute("data", JSONUtils.parseList(list));
-		return VIEW+"user/dept/dept";
+		return "user/dept/dept";
 	}
-	
+
 	@RequestMapping("/userList")
-	public String userList(Model model,HttpServletRequest request,HttpServletResponse response) {
-		ConditionVo cvo=VoFactory.getConditionVo(request);
-		String deptId=request.getParameter("deptId");
-		if("1".equals(deptId))
-		{
+	public String userList(Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		ConditionVo cvo = VoFactory.getConditionVo(request);
+		String deptId = request.getParameter("deptId");
+		if ("1".equals(deptId)) {
 			cvo.setText4("1");
-		}else
-		{
+		} else {
 			cvo.setText3(request.getParameter("deptId"));
 		}
 		request.setAttribute("deptId", deptId);
 		cvo.setTotalCount(userService.getUserCount(cvo));
 		model.addAttribute("vo", cvo);
 		model.addAttribute("list", userService.getList(cvo));
-		return VIEW+"user/dept/userList";
+		return "user/dept/userList";
 	}
-	
+
 	@RequestMapping("/add")
-	public String add(Model model,HttpServletRequest request,HttpServletResponse response) {
-		SysDept dept=new SysDept();
+	public String add(Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		SysDept dept = new SysDept();
 		dept.setPid(Integer.parseInt(request.getParameter("selDept")));
 		model.addAttribute("dept", dept);
-		return VIEW+"user/dept/deptEdit";
+		return "user/dept/deptEdit";
 	}
+
 	@RequestMapping("/edit")
-	public String edit(Model model,HttpServletRequest request,HttpServletResponse response) {
-		SysDept dept=deptService.getDeptById(Integer.parseInt(request.getParameter("selDept")));
+	public String edit(Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		SysDept dept = deptService.getDeptById(Integer.parseInt(request
+				.getParameter("selDept")));
 		model.addAttribute("dept", dept);
-		return VIEW+"user/dept/deptEdit";
+		return "user/dept/deptEdit";
 	}
-	
+
 	@RequestMapping("/del")
-	public ModelAndView del(Model model, HttpServletRequest request)
-	{
+	public ModelAndView del(Model model, HttpServletRequest request) {
 		try {
-			String deptId=request.getParameter("selDept");
+			String deptId = request.getParameter("selDept");
 			deptService.delDeptById(Integer.parseInt(deptId));
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ajaxDoneError("操作失败:"+e.getMessage());
+			return ajaxDoneError("操作失败:" + e.getMessage());
 		}
 		return ajaxDoneSuccess("操作成功");
 	}
-	
+
 	@RequestMapping("/save")
-	public ModelAndView save(SysDept dept,Model model, HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView save(SysDept dept, Model model,
+			HttpServletRequest request, HttpServletResponse response) {
 		try {
-			if(dept!=null)
-			{
+			if (dept != null) {
 				deptService.saveDept(dept);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ajaxDoneError("操作失败:"+e.getMessage());
+			return ajaxDoneError("操作失败:" + e.getMessage());
 		}
 		return ajaxDoneSuccess("操作成功");
 	}
