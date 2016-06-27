@@ -6,5 +6,7 @@ package com.kzfire.portal.utils;
  * 2014-8-13 下午3:11:47  
  */
 public class Contents {
-	   public  final static String LOGIN_USER="currentLoginUser";
+	
+	public  final static String LOGIN_USER="currentLoginUser";
+
 }

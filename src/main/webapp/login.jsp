@@ -13,40 +13,41 @@
 <LINK href="common/images/Default.css" type=text/css rel=stylesheet>
 <LINK href="common/images/xtree.css" type=text/css rel=stylesheet>
 <LINK href="common/images/User_Login.css" type=text/css rel=stylesheet>
-<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
 <META content="MSHTML 6.00.6000.16674" name=GENERATOR>
 <meta http-equiv="Cache" content="no-cache">
-<meta http-equiv="Pragma" content="no-cache" />   
+<meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+<script type="text/javascript" src="${pageContext.request.contextPath }/jui/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-document.getElementById("password").value = "";
-	function login()
-	{
-		var code=document.getElementById("code").value;
-		var name=document.getElementById("username").value;
-		var password=document.getElementById("password").value;
-		if(name==""||password==""||name.length<5||password.length<5||containSpecial(name)||containSpecial(password))
-		{
+	
+	$(function(){
+		$("#password").val('');
+	});
+	
+	function login() {
+		var code = $("#code").val();
+		var name = $("#username").val();
+		var password = $("#password").val();
+		
+		if (name == "" || password == "" || name.length < 5
+				|| password.length < 5 || containSpecial(name)
+				|| containSpecial(password)) {
 			alert("请正确输入账号密码");
 			return false;
 		}
-		 if(code==""||code.length!=4)
-		{
+		if (code == "" || code.length != 4) {
 			alert("请输入验证码");
 			return false;
 		}
 		return true;
 	}
 
-
-	function containSpecial( s )      
-	{      
-	    var containSpecial = RegExp(/[(\ )(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\-)(\_)(\+)(\=)(\[)(\])(\{)(\})(\|)(\\)(\;)(\:)(\')(\")(\,)(\.)(\/)(\<)(\>)(\?)(\)]+/);   
-	    return ( containSpecial.test(s) );      
-	}  
-       
-       
+	function containSpecial(s) {
+		var containSpecial = RegExp(/[(\ )(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\-)(\_)(\+)(\=)(\[)(\])(\{)(\})(\|)(\\)(\;)(\:)(\')(\")(\,)(\.)(\/)(\<)(\>)(\?)(\)]+/);
+		return (containSpecial.test(s));
+	}
 </script>
 
 </HEAD>
@@ -62,40 +63,45 @@ document.getElementById("password").value = "";
 					<LI class=user_top_r></LI>
 				</UL>
 			<DD id=user_main>
-			<form action="login.do" id="login" method="post" onsubmit="return  login();">
-				<UL>
-					<LI class=user_main_l></LI>
-					<LI class=user_main_c>
-						<DIV class=user_main_box>
-							<UL>
-								<LI class=user_main_text>用户名：</LI>
-								<LI class=user_main_input><INPUT id="username" class=TxtUserNameCssClass
-									id=TxtUserName maxLength=20 name="username"></LI>
-							</UL>
-							<UL>
-								<LI class=user_main_text>密 码：</LI>
-								<LI class=user_main_input><INPUT id="password" class=TxtPasswordCssClass
-									id=TxtPassword type=password name="password"></LI>
-							</UL>
-							<UL>
-								<LI class=user_main_text>验证码：</LI>
-								<LI class=user_main_input><INPUT class=TxtValidateCodeCssClass
-									id="code" type="text" name="code" size="10"    width="10" />
-									<img id="imageCode" src="code/getImage.do"  style="margin-bottom: -5px;"
-            title="看不清，点击换一张" style="cursor: pointer;" onclick="this.src=this.src+'?'+Math.random();" />    </LI>
-									
-									
-							</UL>
-							<UL>
-								<LI style="color: red">${message_login}</LI>
-							</UL>
-						</DIV>
-					</LI>
-					<LI class=user_main_r><INPUT class=IbtnEnterCssClass
-						id=IbtnEnter
-						style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px"
-						type=image src="common/images/user_botton.gif" name=IbtnEnter></LI>
-				</UL>
+				<form action="login.do" id="login" method="post"
+					onsubmit="return  login();">
+					<UL>
+						<LI class=user_main_l></LI>
+						<LI class=user_main_c>
+							<DIV class=user_main_box>
+								<UL>
+									<LI class=user_main_text>用户名：</LI>
+									<LI class=user_main_input><INPUT id="username"
+										class=TxtUserNameCssClass id=TxtUserName maxLength=20
+										name="username"></LI>
+								</UL>
+								<UL>
+									<LI class=user_main_text>密 码：</LI>
+									<LI class=user_main_input><INPUT id="password"
+										class=TxtPasswordCssClass id=TxtPassword type=password
+										name="password"></LI>
+								</UL>
+								<UL>
+									<LI class=user_main_text>验证码：</LI>
+									<LI class=user_main_input><INPUT
+										class=TxtValidateCodeCssClass id="code" type="text"
+										name="code" size="10" width="10" /> <img id="imageCode"
+										src="code/getImage.do" style="margin-bottom: -5px;"
+										title="看不清，点击换一张" style="cursor: pointer;"
+										onclick="this.src=this.src+'?'+Math.random();" /></LI>
+
+
+								</UL>
+								<UL>
+									<LI style="color: red">${message_login}</LI>
+								</UL>
+							</DIV>
+						</LI>
+						<LI class=user_main_r><INPUT class=IbtnEnterCssClass
+							id=IbtnEnter
+							style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px"
+							type=image src="common/images/user_botton.gif" name=IbtnEnter></LI>
+					</UL>
 				</form>
 			<DD id=user_bottom>
 				<UL>
