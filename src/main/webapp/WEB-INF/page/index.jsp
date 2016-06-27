@@ -155,12 +155,16 @@ $(function(){
 				</ul>
 				<div class="navTab-panel tabsPageContent layoutBox">
 					<div class="page unitBox">
-						欢迎使用后台管理系统
+						<div class="accountInfo">
+							<p><span>DWZ富客户端框架</span></p>
+							<p>DWZ官方微博:<a href="http://weibo.com/dwzui" target="_blank">http://weibo.com/dwzui</a></p>
+						</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
+
+	</div>
 
 	</div>
 
